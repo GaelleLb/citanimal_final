@@ -3,7 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Race;
+use App\Entity\Animal;
 use App\Entity\Espece;
+use App\Entity\Medical;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -59,8 +61,38 @@ class AppFixtures extends Fixture
              ->setEspece($espece3);
         $manager->persist($race5);
 
+        $medical1 = new Medical();
+        $medical1 ->setFiv(0)
+                  ->setFelv(0)
+                  ->setSterilisation(1)
+                  ->setVaccin(1)
+                  ->setDetails("RAS");
+        $manager->persist($medical1);
 
+        $races = [$race1, $race2, $race3, $race4];
 
+        $faker = \Faker\Factory::create('fr_FR');
+        foreach($races as $r) {
+            $rand = rand(3,5);
+            for($i=1; $i <= $rand; $i++) {
+                $animal = new Animal();
+                $animal->setNom($faker->name())
+                       ->setSexe("Femelle")
+                       ->setDateNaissance(new \DateTime($faker->date($format = 'Y-m-d', $max = 'now')))        
+                       ->setRace($r)               
+                       ->setCaractere($faker->text($maxNbChars = 200))
+                       ->setHistoire($faker->text($maxNbChars = 200))
+                       ->setDescription($faker->text($maxNbChars = 200))
+                       ->setCompatibiliteChat("Ok chat")
+                       ->setCompatibiliteChien("Ok chien")
+                       ->setCompatibiliteEnfant("Ok enfant")
+                       ->setMedical($medical1)
+                       ->setPhoto("aghata.jpg");
+
+                       $manager->persist($animal);
+
+            }
+        }
 
         $manager->flush();
     }

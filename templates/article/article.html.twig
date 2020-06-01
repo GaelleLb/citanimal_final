@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{article.titre}}{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="offset-1 col-10">
+
+            <section class="margin_header">
+                
+                <h1 class="text-center">{{article.titre}}</h1>
+                <h2 class="text-center section_title"><span class="bg_grey">{{article.soustitre}}</span></h2>
+
+                <p class="pt-5 text-justify">{{article.contenu}}</p>
+
+                <div class="text-center mt-5">
+                    <img src="{{asset('img/articles/' ~ article.image)}}" alt="">
+                </div>
+
+            </section>
+
+        
+
+
+
+        
+        </div>
+    </div>
+    
+{% endblock %}

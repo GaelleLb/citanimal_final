@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Citanimal{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="offset-1 col-10">
+        <header class="margin_header">
+            <h2 class="text-center section_title pb-3">
+                <span class="bg_grey">A la Une </span>
+                <span class="link "><a class="font_questrial" href="{{path("articles")}}">Toute l'actu</a></span>
+            </h2>
+    
+            <div class="cards">
+                <div class="row">
+                    {% for article in articles %}
+                        <div class="col-sm-6 col-md-4 col-lg-3 mb-5">
+                            <div class="card text-center card_article">
+                                <div class="card_img card-img-top" style="background-image:url('{{ asset("img/articles/" ~ article.image) }}')"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ article.titre }}</h5>
+                                    <p class="card-text">{{ article.soustitre}}</p>
+                                    <a href="{{ path('articles', {'id': article.id}) }}" class="btn btn-outline-info btn_expand mt-3
+                                    ">Voir l'article</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </header>
+        
+        <section>
+            <h1 class="text-center pt-5">{{ title }}</h1>
+            <h2 class="text-center section_title"><span class="bg_grey">{{ subtitle }}</span></h2>    
+            
+            <div class="row pt-5">
+                <div class="col-6">
+                    <h4 class="font-weight-bold">Qui sommes nous ? </h4>
+                    <p>Notre éthique repose sur le respect de l'animal et la reconnaissance de sa place aux côtés de l'humain dans la cité.
+                        <br>
+                        <br>
+                        Pour cela, Citanimal s'est donnée pour mission principale de faciliter la cohabitation hamonieuse entre humains et animaux 
+                        (de compagnie ou non) dans nos villes. Dans ce but, elle mène une réflexion participative et efficace sur l'intégration 
+                        durable de l'animal en milieu urbain. Nous travaillons ainsi depuis de nombreuses années sur la reconnaissance du statut 
+                        "d'animal citoyen" ou de "chat libre" pour qu'ils soient protégés et respectés.
+                    </p>
+    
+                    <h4 class="font-weight-bold mt-4">Agir sur le terrain</h4>
+                    <p>Notre priorité est d'apporter de l'aide et des solutions concrètes aux populations de "chats libres" de Valenciennes et de 
+                        son agglomération. L'association agit en les soignant, stérilisant, identifiant, pour enrayer leur prolifération et les 
+                        protéger. Une veille sanitaire est mise en place avec un échange avec leur nourrisseurs. Les félins les plus sociables sont 
+                        hébergés au sein de Famille d'Accueil bénévole, recensées par l'association, puis proposé à l'adoption sous contrat et suivi. 
+                        Citanimal peut également apporter son aide aux particuliers dans l'obligation de se séparer de leur.s chat.s. Si cela s'avère 
+                        nécessaire, Citanimal peut accueillir aussi d'autres animaux de compagnie (petits chiens, oiseaux, rongeurs etc.), toujours
+                        dans la mesure des places disponibles.
+                        <br>
+                        <br>
+                        Nous collaborons très souvent en partenariat lors de nos sauvetage. Notre principale partenaire est l'association Ta patte 
+                        sur mon coeur. De manière générale, l'association Citanimal peut apporter son soutien, ses conseils à toutes actions de 
+                        protection animale pour laquelle elle aura été solicitée.
+                    </p>
+                </div>
+    
+                <div class="col-6">
+                    <img id="img_local" src="{{asset("img/local.jpg")}}" alt="local de l'association Citanimal">
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+    
+
+{% endblock %}

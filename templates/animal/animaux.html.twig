@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Citanimal - Chats à l'adoption{% endblock %}
+
+{% block body %}
+
+<section class="bg_white margin_section">
+
+    <h2 class="text-center py-5">Nos Chats à l'adoption</h2>
+
+    <div class="offset-1 col-10">
+        <div class="cards">
+            <div class="row">
+                {% for animal in animaux %}
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-5">
+                        <div class="card text-center ">
+                            <div class="card_img card-img-top" style="background: url(img/chats/{{animal.photo}})"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ animal.nom }}</h5>
+                                <h6>Ajouter l'age une fois que je saurai faire le calcul de convertion DATE en SQL</h6> 
+                                <a href="{{ path('citanimal_show', {'id': animal.id}) }}" class="btn btn-outline-info btn_expand">Plus d'info</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

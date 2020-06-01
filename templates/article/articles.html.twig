@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actualité{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="offset-1 col-10">
+
+        <section class="margin_header">
+
+             <h1 class="text-center">Tout l'actualité</h1>
+             <h2 class="text-center section_title"><span class="bg_grey">Retrouvez la liste de tous les articles concernant l'association</span></h2>
+            
+             <div class="cards pt-5">
+                <div class="row">
+                    {% for article in articles %}
+                        <div class="col-6">
+                            <div class="card text-center card_article mb-5">
+                                <div class="card_img card-img-top" style="background-image:url('{{ asset("img/articles/" ~ article.image) }}')"></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ article.titre }}</h5>
+                                    <p class="card-text">{{ article.soustitre}}</p>
+                                    <a href="{{ path('article', {'id': article.id}) }}" class="btn btn-outline-info btn_expand mt-3
+                                    ">Voir l'article</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>
+
+    
+{% endblock %}

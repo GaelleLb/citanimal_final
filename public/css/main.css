@@ -1,0 +1,226 @@
+/*---------- GENERAL ----------*/
+
+.container-fluid {
+    padding: 0!important;
+}
+
+
+.font_questrial {
+	font-family: "Questrial";
+}
+
+.font_lobster {
+	font-family: "Lobster Two";
+}
+
+.font_imperator {
+    font-family: "Imperator";
+}
+
+.bg_white {
+    background-color: #fefefe;
+}
+
+
+.bg_chocolate {
+    background: #a5755b;
+}
+
+.bg_grey {
+    background: #F2F2F2;
+}
+
+.bg_gray {
+    background: #D8D8D8;
+}
+
+.boxshadow {
+	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, .2);
+}
+
+
+h1, h2 {
+    font-family: "Lobster Two";
+}
+
+p {
+    font-family: "Questrial";
+    margin: 0!important;
+}
+
+.margin_section {
+    padding-top: 183px;
+}
+
+.margin_header {
+    margin-top: 220px;
+}
+
+.paw {
+    padding: 5px;
+    height: 60px;
+}
+
+#paw {
+    cursor: default;
+}
+
+section {
+    padding-bottom: 100px;
+}
+
+/*---------- NAVBAR ---------- */
+
+#navbar {
+margin-top: 44px;
+background-color: #a5755b!important;
+}
+
+.navbar {
+    padding: 0px!important;
+}
+
+#logo {
+    height: 130px;
+    padding-left: 1rem;
+}
+
+.logo_reseau {
+    height: 25px;
+}
+
+.nav-link {
+	font-family: "Questrial";
+    font-size: 1.2rem;
+    color: #fefefe!important;
+}
+
+.nav-link:hover {
+    color: #000!important;
+    transition-duration: 0.4s;
+}
+
+.grey_link {
+    color: #6c6d6d!important;
+    padding: .5rem 1rem;
+}
+
+.dropdown-item {
+    font-family: "Questrial";
+    font-size: 1rem;
+}
+
+.dropdown-item:hover {
+    color: #17a2b8;
+    transition-duration: 0.4s;
+}
+
+#search_paw > .btn-outline-info {
+    border-color: none!important;
+}
+
+#search_paw {
+	background: url(img/black_search_paw.png) no-repeat;
+	background-size: 100%;
+	height: 30px;
+}
+
+#search_paw:hover {
+	background: url(img/white_search_paw.png) no-repeat;
+	background-size: 100%;
+	height: 30px;
+}
+
+
+/*---------- HOME PAGE ----------*/
+
+.card_article {
+    background-color: #eaeaea!important;
+    height: 400px!important;
+}
+
+.section_title {
+    position: relative;
+    clear: both;
+}
+
+
+.section_title::after {
+    z-index: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    top: 50%;
+    right: 0;
+    left: 0;
+    bottom: auto;
+    position: absolute;
+    border-bottom: 2px solid #888888;
+    margin-top: 0;
+}
+
+.section_title span {
+    position: relative;
+    z-index: 10;
+    padding: 0 30px;
+}
+
+.section_title span.link {
+    right: 0;
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+
+}
+.section_title span.link > a {
+    color: #17a2b8;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.section_title span.link > a:hover {
+    text-decoration: none;
+    color: #000000;
+    transition-duration: 0.4s;
+}
+
+
+/*---------- PAGE ADOPTION CHAT ----------*/
+
+.card {
+    transition: all 0.2s;
+    background: #dedede;
+    overflow: hidden;
+  }
+  
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card_img {
+    background-size: cover!important;
+    background-position: center!important;
+    height: 200px;
+}
+
+
+  
+
+/*----------PAGE GUIDE----------*/
+#guide{
+    margin-top: 183px;
+    height: 300px;
+    background: url('img/guide.jpeg') no-repeat center;
+    background-size: cover;
+}
+
+
+/*---------- PAGE STERILISATION ----------*/
+
+#steril {
+    margin-top: 183px;
+    height: 300px;
+    background: url('img/steril.jpeg') no-repeat center;
+    background-size: cover;
+}
+

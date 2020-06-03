@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<section class="margin_header"> 
+    <div class="offset-1 col-10">
+        <h2 class="text-center pb-5">{{animal.nom}}</h2>
+
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+        {% endfor %}
+
+
+        <div class="row">
+            <div class="col-lg-5">
+                <img height="600px" src="{{asset('img/animaux/' ~ animal.photo) }}" alt="{{ animal.nom }}">
+            </div>
+            <div class="col-lg-7">
+
+                
+                <div class="row">
+                    <h6 class="mr-1">Espèce : </h6>
+                    <p>{{ animal.race.espece.nomespece }}</p>
+                </div>
+
+                <div class="row mt-2">
+                    <h6 class="mr-1">Race : </h6>
+                    <p>{{ animal.race.nomrace }}</p>
+                </div>
+                
+                <div class="row mt-2">
+                    <h6 class="mr-1">Sexe :</h6>
+                    {% if animal.sexe %}
+                        Femelle
+                    {% else %}
+                        Mâle
+                    {% endif %}
+                </div>
+                
+
+                <div class="row mt-2">
+                    <h6 class="mr-1">Âge :</h6>
+                </div>
+
+                <div class="row mt-2">
+                    <h6 class="mr-1">Description / Pelage : </h6>
+                    <p>{{animal.race.couleurpelage}}, {{animal.race.longueurpelage}}</p>
+                </div>
+
+                <div class="row mt-2">
+                    <h6 class="mr-1">Caractère : </h6>
+                    <p>{{ animal.caractere }}</p>                    
+                </div>
+ 
+                <div class="row mt-2">
+                    <h6 class="mr-1">Histoire : </h6>
+                    <p>{{ animal.histoire }}</p>                    
+                </div>
+
+                <div class="row mt-3">
+                    <h6 class="mr-1">Compatibilité : </h6>
+                    <p class="col-12">Chats : 
+                        {% if animal.compatibilitechat %}
+                            <span class="badge badge-danger">Pas ok chats</span> 
+                        {% else %}
+                            <span class="badge badge-success">Ok chats</span> 
+                        {% endif %}
+                    </p> 
+                    
+                    <p class="col-12">Chiens :
+                        {% if animal.compatibilitechien %}
+                            <span class="badge badge-danger">Pas ok chiens</span> 
+                        {% else %}
+                            <span class="badge badge-success">Ok chiens</span> 
+                        {% endif %}
+                    </p>
+
+                    <p class="col-12">Enfants :
+                        {% if animal.compatibiliteenfant %}
+                            <span class="badge badge-danger">Pas ok enfants</span> 
+                        {% else %}
+                            <span class="badge badge-success">Ok enfants</span> 
+                        {% endif %}
+                    </p>
+                </div>
+
+                <div class="row mt-3">
+                    <h6 class="mr-1">Medical : </h6>
+                    <p class="col-12">Fiv : 
+                        {% if animal.medical.fiv %}
+                            <span class="badge badge-warning">Positif</span> 
+                        {% else %}
+                            <span class="badge badge-success">Négatif</span> 
+                        {% endif %}
+                    </p> 
+                    
+                    <p class="col-12">Felv :
+                        {% if animal.medical.felv %}
+                            <span class="badge badge-warning">Positif</span> 
+                        {% else %}
+                            <span class="badge badge-success">Négatif</span> 
+                        {% endif %}
+                    </p>
+
+                    <p class="col-12">Stérilisation / Castration :
+                        {% if animal.medical.sterilisation %}
+                            <span class="badge badge-warning">A faire</span> 
+                        {% else %}
+                            <span class="badge badge-success">Fait</span> 
+                        {% endif %}
+                    </p>
+
+                    <p class="col-12">Vaccins :
+                        {% if animal.medical.vaccin %}
+                            <span class="badge badge-warning">A faire</span> 
+                        {% else %}
+                            <span class="badge badge-success">Fait</span> 
+                        {% endif %}
+                    </p>
+
+                    <p class="col-12">Détails :
+                        {{animal.medical.details}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>>
+
+{% endblock %}

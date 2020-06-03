@@ -43,11 +43,6 @@ class Animal
     private $histoire;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $compatibilite_chien;
@@ -78,6 +73,11 @@ class Animal
      * @ORM\JoinColumn(nullable=false)
      */
     private $race;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $disponible;
 
     public function getId(): ?int
     {
@@ -144,17 +144,6 @@ class Animal
         return $this;
     }
 
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): self
-    {
-        $this->description = $description;
-
-        return $this;
-    }
 
     public function getCompatibiliteChien(): ?bool
     {
@@ -224,6 +213,18 @@ class Animal
     public function setRace(?Race $race): self
     {
         $this->race = $race;
+
+        return $this;
+    }
+
+    public function getDisponible(): ?bool
+    {
+        return $this->disponible;
+    }
+
+    public function setDisponible(bool $disponible): self
+    {
+        $this->disponible = $disponible;
 
         return $this;
     }

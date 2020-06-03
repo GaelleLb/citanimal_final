@@ -61,33 +61,35 @@ class AppFixtures extends Fixture
              ->setEspece($espece3);
         $manager->persist($race5);
 
+        $faker = \Faker\Factory::create('fr_FR');
         $medical1 = new Medical();
-        $medical1 ->setFiv(0)
-                  ->setFelv(0)
-                  ->setSterilisation(1)
-                  ->setVaccin(1)
+        $medical1 ->setFiv($faker->numberBetween($min = 0, $max = 1))
+                  ->setFelv($faker->numberBetween($min = 0, $max = 1))
+                  ->setSterilisation($faker->numberBetween($min = 0, $max = 1))
+                  ->setVaccin($faker->numberBetween($min = 0, $max = 1))
                   ->setDetails("RAS");
         $manager->persist($medical1);
+
+
 
         $races = [$race1, $race2, $race3, $race4];
 
         $faker = \Faker\Factory::create('fr_FR');
         foreach($races as $r) {
-            $rand = rand(3,5);
-            for($i=1; $i <= $rand; $i++) {
+            for($i=1; $i <= 10; $i++) {
                 $animal = new Animal();
                 $animal->setNom($faker->name())
-                       ->setSexe("Femelle")
+                       ->setSexe($faker->numberBetween($min = 0, $max = 1))
                        ->setDateNaissance(new \DateTime($faker->date($format = 'Y-m-d', $max = 'now')))        
-                       ->setRace($r)               
+                       ->setRace($r)  
                        ->setCaractere($faker->text($maxNbChars = 200))
                        ->setHistoire($faker->text($maxNbChars = 200))
-                       ->setDescription($faker->text($maxNbChars = 200))
-                       ->setCompatibiliteChat("Ok chat")
-                       ->setCompatibiliteChien("Ok chien")
-                       ->setCompatibiliteEnfant("Ok enfant")
+                       ->setCompatibiliteChat($faker->numberBetween($min = 0, $max = 1))
+                       ->setCompatibiliteChien($faker->numberBetween($min = 0, $max = 1))
+                       ->setCompatibiliteEnfant($faker->numberBetween($min = 0, $max = 1))
                        ->setMedical($medical1)
-                       ->setPhoto("aghata.jpg");
+                       ->setPhoto("agatha.jpg")
+                       ->setDisponible($faker->numberBetween($min = 0, $max = 1));
 
                        $manager->persist($animal);
 

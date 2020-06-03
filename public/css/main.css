@@ -185,7 +185,7 @@ background-color: #a5755b!important;
 }
 
 
-/*---------- PAGE ADOPTION CHAT ----------*/
+/*---------- PAGE ADOPTION ANIMAUX ----------*/
 
 .card {
     transition: all 0.2s;
@@ -197,12 +197,43 @@ background-color: #a5755b!important;
     transform: scale(1.05);
 }
 
-.card_img {
+.card_img_article {
     background-size: cover!important;
     background-position: center!important;
     height: 200px;
 }
 
+.card_img_articles {
+    background-size: cover!important;
+    background-position: center!important;
+    height: 250px;
+}
+
+.card_img {
+    background-size: cover!important;
+    background-position: center!important;
+    height: 380px;
+}
+
+
+.page-item.active .page-link{
+    background: #fefefe!important;
+    color: #a5755b!important;
+    border-color: #a5755b!important;
+}
+
+.page-link {
+    background: #a5755b!important;
+    color: #fefefe!important;
+}
+
+
+
+/*---------- PAGEE D'UN ANIMAL ----------*/
+
+.badge {
+    font-size: 0.9rem;
+}
 
   
 

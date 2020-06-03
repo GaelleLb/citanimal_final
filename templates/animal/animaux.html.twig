@@ -4,26 +4,48 @@
 
 {% block body %}
 
-<section class="bg_white margin_section">
-
-    <h2 class="text-center py-5">Nos Chats à l'adoption</h2>
+<section class="margin_header">
 
     <div class="offset-1 col-10">
-        <div class="cards">
+
+        <h1 class="text-center">Nos Animaux à l'adoption</h1>
+        <h2 class="text-center section_title"><span class="bg_grey">Retrouvez toutes nos boules de poils qui cherchent leur famille pour la vie</span> </h2>
+
+        <div class="cards mt-5">
             <div class="row">
+                
                 {% for animal in animaux %}
+
                     <div class="col-sm-6 col-md-4 col-lg-3 mb-5">
                         <div class="card text-center ">
-                            <div class="card_img card-img-top" style="background: url(img/chats/{{animal.photo}})"></div>
+                            <div class="card_img card-img-top" style="background-image:url('{{ asset("img/animaux/" ~ animal.photo) }}')"></div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ animal.nom }}</h5>
-                                <h6>Ajouter l'age une fois que je saurai faire le calcul de convertion DATE en SQL</h6> 
-                                <a href="{{ path('citanimal_show', {'id': animal.id}) }}" class="btn btn-outline-info btn_expand">Plus d'info</a>
+                                <h6>{{animal.race.espece.nomespece}}, de race {{animal.race.nomrace}}</h6>
+                                {% if animal.sexe %}
+                                    <span class="femelle">Femelle</span> 
+                                {% else %}
+                                    <span class="male">Mâle</span> 
+                                {% endif %}
+                                <p>      
+                                    {# endDate and startDate are strings or DateTime objects #}
+                                    {% set difference = date("now"|date("m/d/Y")).diff(date(animal.datenaissance)) %}
+                                    {% set leftDays = difference.days %}
+                                    {{(leftDays / 365)|round(0, 'floor')}} ans et {{((leftDays / 30.5)-((leftDays / 365)|round(0, 'floor') * 12))|round(0, 'floor')}} mois
+                                </p>
+                                    
+                                <a href="{{ path('animal', {'id': animal.id}) }}" class="btn btn-outline-info btn_expand mt-2">Plus d'info</a>
                             </div>
                         </div>
                     </div>
+
                 {% endfor %}
             </div>
+
+            <div class="navigation">
+                {{ knp_pagination_render(animaux) }}
+            </div>
+
         </div>
     </div>
 </section>

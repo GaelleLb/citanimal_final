@@ -4,6 +4,10 @@
     padding: 0!important;
 }
 
+.row {
+    padding: 0;
+    margin: 0;
+}
 
 .font_questrial {
 	font-family: "Questrial";
@@ -71,6 +75,12 @@ section {
 
 /*---------- NAVBAR ---------- */
 
+.navbar-toggler {
+    margin-right: 30px;
+    border-color: #523a2d!important;
+    background: #F2F2F2;
+}
+
 #navbar {
 margin-top: 44px;
 background-color: #a5755b!important;
@@ -103,6 +113,15 @@ background-color: #a5755b!important;
 .grey_link {
     color: #6c6d6d!important;
     padding: .5rem 1rem;
+}
+
+.red_link {
+    color: #A63035!important; 
+    font-weight: bold;
+}
+
+.red_link:hover {
+    color: #fefefe!important; 
 }
 
 .dropdown-item {
@@ -139,13 +158,40 @@ background-color: #a5755b!important;
     height: 400px!important;
 }
 
-.section_title {
+.section_title_h1 {
     position: relative;
     clear: both;
 }
 
+.section_title_h1::after {
+    z-index: 0;
+    content: "";
+    display: block;
+    width: 100%;
+    top: 65%;
+    right: 0;
+    left: 0;
+    bottom: auto;
+    position: absolute;
+    border-bottom: 2px solid #888888;
+    margin-top: 0;
+}
 
-.section_title::after {
+.section_title_h1 span {
+    position: relative;
+    z-index: 10;
+    padding: 0 30px;
+}
+
+
+
+
+.section_title_h2 {
+    position: relative;
+    clear: both;
+}
+
+.section_title_h2::after {
     z-index: 0;
     content: "";
     display: block;
@@ -159,26 +205,26 @@ background-color: #a5755b!important;
     margin-top: 0;
 }
 
-.section_title span {
+.section_title_h2 span {
     position: relative;
     z-index: 10;
     padding: 0 30px;
 }
 
-.section_title span.link {
+.section_title_h2 span.link {
     right: 0;
     font-size: 1rem;
     font-weight: bold;
     position: absolute;
 
 }
-.section_title span.link > a {
+.section_title_h2 span.link > a {
     color: #17a2b8;
     position: relative;
     text-transform: uppercase;
 }
 
-.section_title span.link > a:hover {
+.section_title_h2 span.link > a:hover {
     text-decoration: none;
     color: #000000;
     transition-duration: 0.4s;
@@ -229,7 +275,17 @@ background-color: #a5755b!important;
 
 
 
-/*---------- PAGEE D'UN ANIMAL ----------*/
+
+
+
+/*---------- PAGE ANIMAUX ADMIN ----------*/
+
+.img_admin_animal {
+    height: 150px;
+}
+
+
+/*---------- PAGE D'UN ANIMAL ----------*/
 
 .badge {
     font-size: 0.9rem;

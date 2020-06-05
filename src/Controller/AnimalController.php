@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Animal;
+use App\Entity\RechercheAnimal;
+use App\Form\RechercheAnimalType;
 use App\Repository\AnimalRepository;
 use App\Repository\ArticleRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -35,13 +37,14 @@ class AnimalController extends AbstractController
     */
     public function animaux(AnimalRepository $repo, PaginatorInterface $paginatorInterface, Request $request)
     {
+
         $animaux = $paginatorInterface->paginate(
             $repo->findAllWithPagination(),
             $request->query->getInt('page', 1),
             12
         );
         return $this->render('animal/animaux.html.twig', [
-            'animaux' => $animaux
+            'animaux' => $animaux,
         ]);
     }
 

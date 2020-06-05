@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des animaux{% endblock %}
+
+{% block body %}
+
+<div class="row mb-5">
+    <div class="offset-1 col-10">
+
+        <h1 class="text-center margin_header section_title_h1"><span class="bg_grey">Liste des animaux</span> </h1>
+
+        <a href="#" class="d-block btn btn-success my-5">Ajouter un animal</a>
+
+        <table class="table table-striped text-center">
+            <tr class="thead-dark">
+                <th>Photo</th>
+                <th>Nom</th>
+                <th>Espèce</th>
+                <th>Race</th>
+                <th>Sexe</th>
+                <th>Âge</th>
+                <th>Adoptable</th>
+                <th> </th>
+            </tr>
+            {% for animal in animaux %}
+            <tr>  
+                <td><img class="img_admin_animal" src="{{ asset('img/animaux/' ~ animal.photo) }}" alt="{{animal.nom}}"></td> 
+                <td>{{animal.nom}}</td> 
+                <td>{{animal.race.espece.nomespece}}</td>
+                <td>{{animal.race.nomrace}}</td>
+                <td>
+                    {% if animal.sexe %}
+                        Femelle
+                    {% else %}
+                        Mâle
+                    {% endif %}
+                </td>
+                <td>
+                    {% set difference = date("now"|date("m/d/Y")).diff(date(animal.datenaissance)) %}
+                    {% set leftDays = difference.days %}
+                    {{(leftDays / 365)|round(0, 'floor')}} ans et {{((leftDays / 30.5)-((leftDays / 365)|round(0, 'floor') * 12))|round(0, 'floor')}} mois
+                </td>
+                <td>
+                    {% if animal.disponible %}
+                        Oui
+                    {% else %}
+                        Non
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="#" class="btn btn-warning col mt-2">Modifier</a>
+                    <a href="#" class="btn btn-danger col mt-2"> Supprimer</a>
+                </td>
+
+            {% endfor %}
+        </table>
+
+        <div class="navigation">
+            {{ knp_pagination_render(animaux) }}
+        </div>
+
+    </div>
+</div>
+
+    
+{% endblock %}

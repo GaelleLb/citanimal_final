@@ -23,7 +23,7 @@ class Animal
     private $nom;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=7)
      */
     private $sexe;
 
@@ -96,12 +96,12 @@ class Animal
         return $this;
     }
 
-    public function getSexe(): ?bool
+    public function getSexe(): ?string
     {
         return $this->sexe;
     }
 
-    public function setSexe(bool $sexe): self
+    public function setSexe(string $sexe): self
     {
         $this->sexe = $sexe;
 

@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
             } else {
           //sinon on retire la classe 
                 $('#navbar').removeClass("bg_chocolate");
-                $('#navbar').removeClass("boxshadow");
+                $('#navbar').addClass("boxshadow"); 
                 $('.nav-link').removeClass("white_link");
                 logo.style.height = "130px"; 
 

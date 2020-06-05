@@ -37,14 +37,18 @@ class AnimalController extends AbstractController
     */
     public function animaux(AnimalRepository $repo, PaginatorInterface $paginatorInterface, Request $request)
     {
+        $search = new RechercheAnimal();
+        $form = $this->createForm(RechercheAnimalType::class, $search);
+        $form->handleRequest($request);
 
         $animaux = $paginatorInterface->paginate(
-            $repo->findAllWithPagination(),
+            $repo->findAllWithPagination($search),
             $request->query->getInt('page', 1),
             12
         );
         return $this->render('animal/animaux.html.twig', [
             'animaux' => $animaux,
+            'form' => $form->createView()
         ]);
     }
 

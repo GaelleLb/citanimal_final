@@ -18,19 +18,29 @@ class RechercheAnimalType extends AbstractType
     {
         $builder
 
+        ->add('espece', EntityType::class, [
+            // looks for choices from this entity
+            'class' => Espece::class,
+            'required' => false,
+            // uses the User.username property as the visible option string
+            'choice_label' => 'nom_espece',
+ 
+        ])
 
         ->add('race', EntityType::class, [
             // looks for choices from this entity
             'class' => Race::class,
-        
+            'required' => false,
+
             // uses the User.username property as the visible option string
             'choice_label' => 'nom_race',
  
         ])
 
         ->add('sexe', ChoiceType::class, [
+            'required' => false, 
+
             'choices'  => [
-                'Aucun' => null,
                 'Mâle' => 'Mâle',
                 'Femelle' => 'Femelle'
             ],

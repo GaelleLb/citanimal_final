@@ -1,7 +1,7 @@
 jQuery(document).ready(function($){
 
     /* NAVBAR */
-    var navheight = 45; // c'est le nombre de pixels à partir duquel on déclenche le tout
+    var navheight = 100; // c'est le nombre de pixels à partir duquel on déclenche le tout
     var logo = document.getElementById("logo");
     
     $(function(){

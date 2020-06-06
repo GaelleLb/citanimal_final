@@ -4,6 +4,7 @@ namespace App\Entity;
 
 class RechercheAnimal {
 
+    private $espece;
 
     private $race;
 
@@ -14,6 +15,19 @@ class RechercheAnimal {
     private $sexe;
 
 
+
+
+    public function getEspece(): ?Espece
+    {
+        return $this->espece;
+    }
+
+    public function setEspece(?Espece $espece): self
+    {
+        $this->espece = $espece;
+
+        return $this;
+    }
 
 
     

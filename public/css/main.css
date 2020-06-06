@@ -73,6 +73,10 @@ section {
     padding-bottom: 100px;
 }
 
+label {
+    color: #fefefe;
+}
+
 /*---------- NAVBAR ---------- */
 
 .navbar-toggler {
@@ -232,6 +236,10 @@ background-color: #a5755b!important;
 
 
 /*---------- PAGE ADOPTION ANIMAUX ----------*/
+
+.margin_filtre_adoption {
+    margin-top: 180px;
+}
 
 .card {
     transition: all 0.2s;

@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Espece;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\RechercheEspece;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method Espece|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,17 @@ class EspeceRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Espece::class);
+    }
+
+    public function findByEspeceName(RechercheEspece $search){
+        
+        $query = $this->createQueryBuilder('e');
+
+        
+        if(!is_null($search->getEspece())){
+            $query = $query->andWhere('a.espece = :espece')
+            ->setParameter(':espece',$search->getEspece());
+        }
     }
 
     // /**

@@ -5,7 +5,26 @@
 {% block body %}
 
 
-<section class="margin_header">
+<section class="margin_filtre_adoption">
+
+    <div class=" bg-dark p-2 my-4">
+        {{form_start(form)}}
+        <div class="form-row align-items-end">
+            <div class="col">
+                {{form_row(form.sexe)}}
+            </div>
+            <div class="col">
+                {{form_row(form.espece)}}
+            </div>
+            <div class="col">
+                {{form_row(form.race)}}
+            </div>
+            <div class="col">
+                <button class="btn btn-info mt-4">Rechercher</button>
+            </div>
+        </div>
+        {{form_end(form)}}
+    </div>
 
 
     <div class="offset-1 col-10">
@@ -13,24 +32,6 @@
         <h1 class="text-center section_title_h1"><span class="bg_grey">Nos Animaux à l'adoption</span></h1>
         <h2 class="text-center">Retrouvez toutes nos boules de poils qui cherchent leur famille pour la vie</h2>
 
-        <div class="jumbotron">
-            <div class="contrainer">
-                {{form_start(form)}}
-                <div class="form-row">
-                    <div class="col">
-                        {{form_row(form.sexe)}}
-                    </div>
-
-                    <div class="col">
-                        {{form_row(form.race)}}
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-info">Rechercher</button>
-                    </div>
-                </div>
-                {{form_end(form)}}
-            </div>
-        </div>
 
         <div class="cards mt-5">
             <div class="row">

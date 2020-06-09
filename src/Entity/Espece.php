@@ -51,6 +51,10 @@ class Espece
         return $this;
     }
 
+    public function __tostring() {
+        return $this->nom_espece;
+    }
+
     /**
      * @return Collection|Race[]
      */

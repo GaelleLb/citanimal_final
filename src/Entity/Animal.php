@@ -217,6 +217,10 @@ class Animal
         return $this;
     }
 
+    public function __tostring() {
+        return $this->race;
+    }
+
     public function getDisponible(): ?bool
     {
         return $this->disponible;

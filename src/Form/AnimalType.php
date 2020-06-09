@@ -2,10 +2,20 @@
 
 namespace App\Form;
 
+use App\Entity\Race;
 use App\Entity\Animal;
+use App\Entity\Espece;
+use App\Entity\Medical;
+use App\Form\EspeceType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class AnimalType extends AbstractType
 {
@@ -13,18 +23,67 @@ class AnimalType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('sexe')
-            ->add('date_naissance')
+
+            ->add('espece', EntityType::class, [
+                // looks for choices from this entity
+                'class' => Espece::class,    
+                'label' => 'Espèce',
+                'mapped' => false,
+                // uses the User.username property as the visible option string
+            ])
+
+            ->add('race', EntityType::class, [
+                // looks for choices from this entity
+                'class' => Race::class,    
+                'label' => 'Race',
+
+                // uses the User.username property as the visible option string
+            ])
+            
+            ->add('sexe', ChoiceType::class, [    
+                'choices'  => [
+                    'Mâle' => 'Mâle',
+                    'Femelle' => 'Femelle'
+                ],
+            ])
+            
+            ->add('date_naissance', DateType::class, [
+                'label' => 'Date de Naissance'
+            ])
+            
             ->add('caractere')
             ->add('histoire')
-            ->add('compatibilite_chien')
             ->add('compatibilite_chat')
+            ->add('compatibilite_chien')
             ->add('compatibilite_enfant')
+
+            ->add('medical', MedicalType::class)
+
             ->add('photo')
-            ->add('disponible')
-            ->add('medical')
-            ->add('race')
-        ;
+            ->add('disponible', CheckboxType::class, [
+                'label' => 'Disponible à l\'adoption',
+                'required' => false
+            ]);
+
+            $builder->get('espece')->addEventListener(
+                FormEvents::POST_SUBMIT,
+                function (FormEvent $event) {
+                    $form = $event->getForm();
+                    $builder = $form->getParent()
+                                    ->getConfig()
+                                    ->getFormFactory()
+                                    ->createNamedBuilder('race', EntityType::class, null,
+                                        [
+                                            'class' =>Race::class,
+                                            'placeholder' => 'Sélectionnez la race',
+                                            'mapped' => false,
+                                            'required' => false,
+                                            'choises' => $form->getData()->getRace()
+                                        ]
+                                    );
+                }
+                
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

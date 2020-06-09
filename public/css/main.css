@@ -4,6 +4,10 @@
     padding: 0!important;
 }
 
+body {
+    margin: 0!important;
+}
+
 .row {
     padding: 0;
     margin: 0;
@@ -73,9 +77,30 @@ section {
     padding-bottom: 100px;
 }
 
-label {
-    color: #fefefe;
+legend {
+    display: none;
 }
+
+.error404 {
+    max-width: 100%!important;
+    height: auto!important;
+    position: relative;
+}
+
+/*---------- ERROR 404 ----------*/
+
+.btn_retour {
+    position: absolute;
+    left: 15%;
+    bottom: 10%;
+}
+
+.btn_retour_mobile {
+    position: absolute;
+    left: 22%;
+    bottom: 47%;
+}
+
 
 /*---------- NAVBAR ---------- */
 
@@ -86,8 +111,8 @@ label {
 }
 
 #navbar {
-margin-top: 44px;
-background-color: #a5755b!important;
+    margin-top: 44px;
+    background-color: #a5755b!important;
 }
 
 .navbar {
@@ -251,6 +276,10 @@ background-color: #a5755b!important;
     transform: scale(1.05);
 }
 
+.card-body {
+    padding: 0;
+}
+
 .card_img_article {
     background-size: cover!important;
     background-position: center!important;
@@ -290,6 +319,11 @@ background-color: #a5755b!important;
 
 .img_admin_animal {
     height: 150px;
+}
+
+/*---Modifier---*/
+.form-group {
+    margin-bottom: 5px!important;
 }
 
 

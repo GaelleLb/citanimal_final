@@ -68,6 +68,10 @@ class Race
         return $this;
     }
 
+    public function __tostring() {
+        return $this->nom_race;
+    }
+
     public function getCouleurPelage(): ?string
     {
         return $this->couleur_pelage;
@@ -134,6 +138,7 @@ class Race
 
         return $this;
     }
+
 
 
 }

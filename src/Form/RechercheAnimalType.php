@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Race;
-use App\Entity\Espece;
 use App\Entity\RechercheAnimal;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,19 +17,13 @@ class RechercheAnimalType extends AbstractType
     {
         $builder
 
-        ->add('espece', EntityType::class, [
-            // looks for choices from this entity
-            'class' => Espece::class,
-            'required' => false,
-            // uses the User.username property as the visible option string
-            'choice_label' => 'nom_espece',
- 
-        ])
+
 
         ->add('race', EntityType::class, [
             // looks for choices from this entity
             'class' => Race::class,
             'required' => false,
+            'label' => false,
 
             // uses the User.username property as the visible option string
             'choice_label' => 'nom_race',
@@ -39,6 +32,7 @@ class RechercheAnimalType extends AbstractType
 
         ->add('sexe', ChoiceType::class, [
             'required' => false, 
+            'label' => false,
 
             'choices'  => [
                 'Mâle' => 'Mâle',

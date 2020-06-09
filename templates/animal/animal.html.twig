@@ -59,25 +59,25 @@
                     <h6 class="mr-1">Compatibilité : </h6>
                     <p class="col-12">Chats : 
                         {% if animal.compatibilitechat %}
-                            <span class="badge badge-danger">Pas ok chats</span> 
+                            <span class="badge badge-success">Ok chat</span> 
                         {% else %}
-                            <span class="badge badge-success">Ok chats</span> 
+                            <span class="badge badge-danger">Pas ok chats</span> 
                         {% endif %}
                     </p> 
                     
                     <p class="col-12">Chiens :
                         {% if animal.compatibilitechien %}
-                            <span class="badge badge-danger">Pas ok chiens</span> 
-                        {% else %}
                             <span class="badge badge-success">Ok chiens</span> 
+                        {% else %}
+                            <span class="badge badge-danger">Pas ok chiens</span> 
                         {% endif %}
                     </p>
 
                     <p class="col-12">Enfants :
                         {% if animal.compatibiliteenfant %}
-                            <span class="badge badge-danger">Pas ok enfants</span> 
-                        {% else %}
                             <span class="badge badge-success">Ok enfants</span> 
+                        {% else %}
+                            <span class="badge badge-danger">Pas ok enfants</span> 
                         {% endif %}
                     </p>
                 </div>

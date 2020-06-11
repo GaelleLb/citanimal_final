@@ -24,15 +24,6 @@ class Race
      */
     private $nom_race;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $couleur_pelage;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $longueur_pelage;
 
     /**
      * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="race")
@@ -72,30 +63,7 @@ class Race
         return $this->nom_race;
     }
 
-    public function getCouleurPelage(): ?string
-    {
-        return $this->couleur_pelage;
-    }
-
-    public function setCouleurPelage(string $couleur_pelage): self
-    {
-        $this->couleur_pelage = $couleur_pelage;
-
-        return $this;
-    }
-
-    public function getLongueurPelage(): ?string
-    {
-        return $this->longueur_pelage;
-    }
-
-    public function setLongueurPelage(string $longueur_pelage): self
-    {
-        $this->longueur_pelage = $longueur_pelage;
-
-        return $this;
-    }
-
+    
     /**
      * @return Collection|Animal[]
      */

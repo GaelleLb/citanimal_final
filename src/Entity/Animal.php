@@ -62,11 +62,6 @@ class Animal
      */
     private $photo;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Medical::class, inversedBy="animaux")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $medical;
 
     /**
      * @ORM\ManyToOne(targetEntity=Race::class, inversedBy="animaux")
@@ -78,6 +73,42 @@ class Animal
      * @ORM\Column(type="boolean")
      */
     private $disponible;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $couleur_pelage;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $longueur_pelage;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $fiv;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $felv;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $sterilisation;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $vaccin;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $details;
+
 
     public function getId(): ?int
     {
@@ -193,17 +224,6 @@ class Animal
         return $this;
     }
 
-    public function getMedical(): ?Medical
-    {
-        return $this->medical;
-    }
-
-    public function setMedical(?Medical $medical): self
-    {
-        $this->medical = $medical;
-
-        return $this;
-    }
 
     public function getRace(): ?Race
     {
@@ -232,4 +252,92 @@ class Animal
 
         return $this;
     }
+
+    public function getCouleurPelage(): ?string
+    {
+        return $this->couleur_pelage;
+    }
+
+    public function setCouleurPelage(string $couleur_pelage): self
+    {
+        $this->couleur_pelage = $couleur_pelage;
+
+        return $this;
+    }
+
+    public function getLongueurPelage(): ?string
+    {
+        return $this->longueur_pelage;
+    }
+
+    public function setLongueurPelage(string $longueur_pelage): self
+    {
+        $this->longueur_pelage = $longueur_pelage;
+
+        return $this;
+    }
+
+    public function getFiv(): ?bool
+    {
+        return $this->fiv;
+    }
+
+    public function setFiv(bool $fiv): self
+    {
+        $this->fiv = $fiv;
+
+        return $this;
+    }
+
+    public function getFelv(): ?bool
+    {
+        return $this->felv;
+    }
+
+    public function setFelv(bool $felv): self
+    {
+        $this->felv = $felv;
+
+        return $this;
+    }
+
+    public function getSterilisation(): ?bool
+    {
+        return $this->sterilisation;
+    }
+
+    public function setSterilisation(bool $sterilisation): self
+    {
+        $this->sterilisation = $sterilisation;
+
+        return $this;
+    }
+
+    public function getVaccin(): ?bool
+    {
+        return $this->vaccin;
+    }
+
+    public function setVaccin(bool $vaccin): self
+    {
+        $this->vaccin = $vaccin;
+
+        return $this;
+    }
+
+    public function getDetails(): ?string
+    {
+        return $this->details;
+    }
+
+    public function setDetails(?string $details): self
+    {
+        $this->details = $details;
+
+        return $this;
+    }
+
+
+
+
 }

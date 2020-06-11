@@ -57,7 +57,35 @@ class AnimalType extends AbstractType
             ->add('compatibilite_chien')
             ->add('compatibilite_enfant')
 
-            ->add('medical', MedicalType::class)
+            ->add('fiv', ChoiceType::class, [    
+                'choices'  => [
+                    'Positif' => 'Positif',
+                    'Négatif' => 'Négatif'
+                ],
+            ])
+
+            ->add('felv', ChoiceType::class, [    
+                'choices'  => [
+                    'Positif' => 'Positif',
+                    'Négatif' => 'Négatif'
+                ],
+            ])
+
+            ->add('Stérilisation', ChoiceType::class, [    
+                'choices'  => [
+                    'Fait' => 'Fait',
+                    'A Faire' => 'A faire'
+                ],
+            ])
+
+            ->add('sterilisation', ChoiceType::class, [    
+                'choices'  => [
+                    'Fait' => 'Fait',
+                    'A Faire' => 'A faire'
+                ],
+            ])
+
+            ->add('details')
 
             ->add('photo')
             ->add('disponible', CheckboxType::class, [
@@ -65,25 +93,7 @@ class AnimalType extends AbstractType
                 'required' => false
             ]);
 
-            $builder->get('espece')->addEventListener(
-                FormEvents::POST_SUBMIT,
-                function (FormEvent $event) {
-                    $form = $event->getForm();
-                    $builder = $form->getParent()
-                                    ->getConfig()
-                                    ->getFormFactory()
-                                    ->createNamedBuilder('race', EntityType::class, null,
-                                        [
-                                            'class' =>Race::class,
-                                            'placeholder' => 'Sélectionnez la race',
-                                            'mapped' => false,
-                                            'required' => false,
-                                            'choises' => $form->getData()->getRace()
-                                        ]
-                                    );
-                }
-                
-            );
+            
     }
 
     public function configureOptions(OptionsResolver $resolver)

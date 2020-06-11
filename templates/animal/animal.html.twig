@@ -38,11 +38,18 @@
 
                 <div class="row mt-2">
                     <h6 class="mr-1">Âge :</h6>
+                    <p>      
+                        {# endDate and startDate are strings or DateTime objects #}
+                        {% set difference = date("now"|date("m/d/Y")).diff(date(animal.datenaissance)) %}
+                        {% set leftDays = difference.days %}
+                        {{(leftDays / 365)|round(0, 'floor')}} ans et {{((leftDays / 30.5)-((leftDays / 365)|round(0, 'floor') * 12))|round(0, 'floor')}} mois
+                    </p>
+                    
                 </div>
 
                 <div class="row mt-2">
                     <h6 class="mr-1">Description / Pelage : </h6>
-                    <p>{{animal.race.couleurpelage}}, {{animal.race.longueurpelage}}</p>
+                    <p>{{animal.couleurpelage}}, {{animal.longueurpelage}}</p>
                 </div>
 
                 <div class="row mt-2">
@@ -85,7 +92,7 @@
                 <div class="row mt-3">
                     <h6 class="mr-1">Medical : </h6>
                     <p class="col-12">Fiv : 
-                        {% if animal.medical.fiv %}
+                        {% if animal.fiv %}
                             <span class="badge badge-warning">Positif</span> 
                         {% else %}
                             <span class="badge badge-success">Négatif</span> 
@@ -93,7 +100,7 @@
                     </p> 
                     
                     <p class="col-12">Felv :
-                        {% if animal.medical.felv %}
+                        {% if animal.felv %}
                             <span class="badge badge-warning">Positif</span> 
                         {% else %}
                             <span class="badge badge-success">Négatif</span> 
@@ -101,7 +108,7 @@
                     </p>
 
                     <p class="col-12">Stérilisation / Castration :
-                        {% if animal.medical.sterilisation %}
+                        {% if animal.sterilisation %}
                             <span class="badge badge-warning">A faire</span> 
                         {% else %}
                             <span class="badge badge-success">Fait</span> 
@@ -109,7 +116,7 @@
                     </p>
 
                     <p class="col-12">Vaccins :
-                        {% if animal.medical.vaccin %}
+                        {% if animal.vaccin %}
                             <span class="badge badge-warning">A faire</span> 
                         {% else %}
                             <span class="badge badge-success">Fait</span> 
@@ -117,7 +124,7 @@
                     </p>
 
                     <p class="col-12">Détails :
-                        {{animal.medical.details}}
+                        {{animal.details}}
                     </p>
                 </div>
             </div>

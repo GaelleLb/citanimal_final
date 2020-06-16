@@ -5,17 +5,14 @@ namespace App\Form;
 use App\Entity\Race;
 use App\Entity\Animal;
 use App\Entity\Espece;
-use App\Entity\Medical;
-use App\Form\EspeceType;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class AnimalType extends AbstractType
 {
@@ -28,7 +25,6 @@ class AnimalType extends AbstractType
                 // looks for choices from this entity
                 'class' => Espece::class,    
                 'label' => 'Espèce',
-                'mapped' => false,
                 // uses the User.username property as the visible option string
             ])
 
@@ -52,7 +48,34 @@ class AnimalType extends AbstractType
             ])
             
             ->add('caractere')
+
             ->add('histoire')
+
+            ->add('couleur_pelage', ChoiceType::class, [    
+                'choices'  => [
+                    'Blanc' => 'Blanc',
+                    'Blanc et noir' => 'Blanc et noir',
+                    'Gris' => 'Gris',
+                    'Noir' => 'Noir',
+                    'Roux' => 'Roux',
+                    'Trigré Gris' => 'Tigré Gris',
+                    'Tigré gris, ventre blanc' => 'Tigré gris, ventre blanc',
+                    'Tigré roux' => 'Tigré roux',
+                    'Tigré roux, ventre blanc' => 'Tigré roux, ventre blanc',
+                    'Tricolore' => 'Tricolore',
+                ],
+            ])
+
+            ->add('longueur_pelage', ChoiceType::class, [    
+                'choices'  => [
+                    'Court' => 'Court',
+                    'Mi-long' => 'Mi-long',
+                    'Long' => 'Long',
+                    'Frisé' => 'Frisé',
+                    'Sans poils' => 'Sans poils',
+                ],
+            ])
+
             ->add('compatibilite_chat')
             ->add('compatibilite_chien')
             ->add('compatibilite_enfant')
@@ -71,14 +94,14 @@ class AnimalType extends AbstractType
                 ],
             ])
 
-            ->add('Stérilisation', ChoiceType::class, [    
+            ->add('sterilisation', ChoiceType::class, [    
                 'choices'  => [
                     'Fait' => 'Fait',
                     'A Faire' => 'A faire'
                 ],
             ])
 
-            ->add('sterilisation', ChoiceType::class, [    
+            ->add('vaccin', ChoiceType::class, [    
                 'choices'  => [
                     'Fait' => 'Fait',
                     'A Faire' => 'A faire'
@@ -87,10 +110,14 @@ class AnimalType extends AbstractType
 
             ->add('details')
 
-            ->add('photo')
-            ->add('disponible', CheckboxType::class, [
+            ->add('imageFile', FileType::class, ['required' => false])
+
+            ->add('disponible', ChoiceType::class, [
                 'label' => 'Disponible à l\'adoption',
-                'required' => false
+                'choices'  => [
+                    'Oui' => 'Oui',
+                    'Non' => 'Non',
+                ],
             ]);
 
             

@@ -4,9 +4,16 @@ namespace App\Entity;
 
 use App\Repository\AnimalRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Entity\File as EmbeddedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+
 
 /**
  * @ORM\Entity(repositoryClass=AnimalRepository::class)
+ * @Vich\Uploadable
  */
 class Animal
 {
@@ -62,6 +69,11 @@ class Animal
      */
     private $photo;
 
+    /**
+     * @Vich\UploadableField(mapping="animaux_image", fileNameProperty="photo")
+     */
+    private $imageFile; 
+
 
     /**
      * @ORM\ManyToOne(targetEntity=Race::class, inversedBy="animaux")
@@ -108,6 +120,12 @@ class Animal
      * @ORM\Column(type="text", nullable=true)
      */
     private $details;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Espece::class, inversedBy="animaux")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $espece;
 
 
     public function getId(): ?int
@@ -217,13 +235,32 @@ class Animal
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
 
         return $this;
     }
 
+    
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+
+    public function setImageFile(?File $imageFile = null): self
+    {
+        $this->imageFile = $imageFile;
+        return $this;
+
+        //if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+           // $this->updatedAt = new \DateTimeImmutable();
+       // }
+    }
 
     public function getRace(): ?Race
     {
@@ -333,6 +370,18 @@ class Animal
     public function setDetails(?string $details): self
     {
         $this->details = $details;
+
+        return $this;
+    }
+
+    public function getEspece(): ?Espece
+    {
+        return $this->espece;
+    }
+
+    public function setEspece(?Espece $espece): self
+    {
+        $this->espece = $espece;
 
         return $this;
     }

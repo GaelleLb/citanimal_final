@@ -27,45 +27,40 @@ class AppFixtures extends Fixture
 
 
         $race1 = new Race();
-        $race1->setNomRace("Non défini")
-             ->setEspece($espece1);
+        $race1->setNomRace("Non défini");
         $manager->persist($race1);
 
         $race2 = new Race();
-        $race2->setNomRace("Main Coon")
-             ->setEspece($espece1);
+        $race2->setNomRace("Main Coon");
         $manager->persist($race2);
 
         $race3 = new Race();
-        $race3->setNomRace("Croisé")
-             ->setEspece($espece2);
+        $race3->setNomRace("Croisé");
         $manager->persist($race3);
 
         $race4 = new Race();
-        $race4->setNomRace("Labrador")
-             ->setEspece($espece2);
+        $race4->setNomRace("Labrador");
         $manager->persist($race4);
 
         $race5 = new Race();
-        $race5->setNomRace("Lapin")
-             ->setEspece($espece3);
+        $race5->setNomRace("Lapin");
         $manager->persist($race5);
 
 
 
-
-
+        $especes = [$espece1, $espece2, $espece3];
         $races = [$race1, $race2, $race3, $race4, $race5];
 
-
-        $faker = \Faker\Factory::create('fr_FR');
+        $faker = \Faker\Factory::create('fr_FR');    
+        
         foreach($races as $r) {
-            for($i=1; $i <= 10; $i++) {
+            for($i=1; $i <= 2; $i++) {
                 $animal = new Animal();
                 $animal->setNom($faker->name())
                        ->setSexe("Femelle")
                        ->setDateNaissance(new \DateTime($faker->date($format = 'Y-m-d', $max = 'now')))        
                        ->setRace($r)  
+                       ->setEspece($especes[$faker->randomElement($array = array(0,1,2))])
                        ->setCouleurPelage("Tigré gris")
                        ->setLongueurPelage("poil court")
                        ->setCaractere($faker->text($maxNbChars = 200))

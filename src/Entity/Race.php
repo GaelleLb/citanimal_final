@@ -30,11 +30,6 @@ class Race
      */
     private $animaux;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Espece::class, inversedBy="race")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $espece;
 
 
     public function __construct()
@@ -91,18 +86,6 @@ class Race
                 $animaux->setRace(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getEspece(): ?Espece
-    {
-        return $this->espece;
-    }
-
-    public function setEspece(?Espece $espece): self
-    {
-        $this->espece = $espece;
 
         return $this;
     }

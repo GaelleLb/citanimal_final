@@ -37,9 +37,14 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/animaux/{id}", name="modifierAnimal")
+     * @Route("/admin/animaux/creation", name="ajouterAnimal")
+     * @Route("/admin/animaux/{id}", name="modifierAnimal", methods="GET|POST")
      */    
-    public function modifier(Animal $animal, Request $request, EntityManagerInterface $manager) {
+    public function ajoutetEtModifier(Animal $animal = null, Request $request, EntityManagerInterface $manager) {
+
+        if(!$animal) {
+            $animal = new Animal();
+        }
 
         $form = $this->createForm(AnimalType::class, $animal);
         $form->handleRequest($request);
@@ -50,9 +55,23 @@ class AdminController extends AbstractController
             return $this->redirectToRoute("adminAnimaux");
         }
 
-        return $this->render('admin/modification.html.twig', [
+        return $this->render('admin/modifEtAjout.html.twig', [
             'animaux' => $animal,
             'form' => $form->createView(),
+            'modification' => $animal->getId() !== null
         ]);
+    }
+
+    /**
+     * @Route("/admin/animaux/{id}", name="supprimerAnimal", methods="delete")
+     */
+    public function supprimer(Animal $animal, Request $request, EntityManagerInterface $manager ) {
+
+        if($this->isCsrfTokenValid("supprimer". $animal->getId(), $request->get('_token')))
+
+        $manager->remove($animal);
+        $manager->flush();
+
+        return $this->redirectToRoute('adminAnimaux');
     }
 }

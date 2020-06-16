@@ -25,13 +25,13 @@ class Espece
     private $nom_espece;
 
     /**
-     * @ORM\OneToMany(targetEntity=Race::class, mappedBy="espece")
+     * @ORM\OneToMany(targetEntity=Animal::class, mappedBy="espece")
      */
-    private $race;
+    private $animaux;
 
     public function __construct()
     {
-        $this->race = new ArrayCollection();
+        $this->animaux = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -56,30 +56,30 @@ class Espece
     }
 
     /**
-     * @return Collection|Race[]
+     * @return Collection|Animal[]
      */
-    public function getRace(): Collection
+    public function getAnimaux(): Collection
     {
-        return $this->race;
+        return $this->animaux;
     }
 
-    public function addRace(Race $race): self
+    public function addAnimaux(Animal $animaux): self
     {
-        if (!$this->race->contains($race)) {
-            $this->race[] = $race;
-            $race->setEspece($this);
+        if (!$this->animaux->contains($animaux)) {
+            $this->animaux[] = $animaux;
+            $animaux->setEspece($this);
         }
 
         return $this;
     }
 
-    public function removeRace(Race $race): self
+    public function removeAnimaux(Animal $animaux): self
     {
-        if ($this->race->contains($race)) {
-            $this->race->removeElement($race);
+        if ($this->animaux->contains($animaux)) {
+            $this->animaux->removeElement($animaux);
             // set the owning side to null (unless already changed)
-            if ($race->getEspece() === $this) {
-                $race->setEspece(null);
+            if ($animaux->getEspece() === $this) {
+                $animaux->setEspece(null);
             }
         }
 

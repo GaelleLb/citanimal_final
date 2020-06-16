@@ -33,8 +33,8 @@ class AnimalRepository extends ServiceEntityRepository
         
         if(!is_null($search->getRace())){
             $query = $query
-            ->andWhere('a.race = :race')
-            ->setParameter(':race',$search->getRace());
+            ->andWhere('a.espece = :espece')
+            ->setParameter(':espece',$search->getRace());
         }
 
         if(!is_null($search->getSexe())){

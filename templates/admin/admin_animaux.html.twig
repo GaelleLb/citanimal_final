@@ -9,9 +9,11 @@
 
         <h1 class="text-center margin_header section_title_h1"><span class="bg_grey">Liste des animaux</span> </h1>
 
-        <a href="#" class="d-block btn btn-success my-5">Ajouter un animal</a>
+        <a href="{{path('ajouterAnimal')}}" class="d-block btn btn-success my-5 boxshadow">Ajouter un animal</a>
+    </div>
 
-        <table class="table table-striped text-center">
+
+        <table class="table table-striped text-center mx-3">
             <tr class="thead-dark">
                 <th>Photo</th>
                 <th>Nom</th>
@@ -26,7 +28,7 @@
             <tr>  
                 <td><img class="img_admin_animal" src="{{ asset('img/animaux/' ~ animal.photo) }}" alt="{{animal.nom}}"></td> 
                 <td>{{animal.nom}}</td> 
-                <td>{{animal.race.espece.nomespece}}</td>
+                <td>{{animal.espece.nomespece}}</td>
                 <td>{{animal.race.nomrace}}</td>
                 <td>
                     {% if animal.sexe %}
@@ -49,7 +51,11 @@
                 </td>
                 <td>
                     <a href="{{path('modifierAnimal', {'id': animal.id} )}}" class="btn btn-warning col mt-2">Modifier</a>
-                    <a href="#" class="btn btn-danger col mt-2"> Supprimer</a>
+                    <form method="POST" action="{{path('supprimerAnimal', {'id' : animal.id})}}">
+                        <input type="hidden" name="_method" value="delete">
+                        <input type="hidden" name="_token" value="{{csrf_token('supprimer' ~ animal.id)}}">
+                        <input type="submit" class="btn btn-danger col mt-2" value="Supprimer" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer cet animal ? Cette action est irréversible')">
+                    </form>
                 </td>
 
             {% endfor %}
@@ -59,7 +65,6 @@
             {{ knp_pagination_render(animaux) }}
         </div>
 
-    </div>
 </div>
 
     

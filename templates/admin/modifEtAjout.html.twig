@@ -6,7 +6,11 @@
 
 <section>
 
+    {% if modification %}
     <h1 class="offset-1 col-10 text-center margin_header section_title_h1 "><span class="bg_grey">Modifier un animal</span></h1>
+    {% else %}
+    <h1 class="offset-1 col-10 text-center margin_header section_title_h1 "><span class="bg_grey">Ajouter un animal</span></h1>
+    {% endif %}
 
     <div class="row">
         <div class="offset-sm-1 offset-lg-3 col-sm-10 col-lg-6 mt-4 p-4 bg_gray">

@@ -22,7 +22,7 @@
                 
                 <div class="row">
                     <h6 class="mr-1">Espèce : </h6>
-                    <p>{{ animal.race.espece.nomespece }}</p>
+                    <p>{{ animal.espece.nomespece }}</p>
                 </div>
 
                 <div class="row mt-2">
@@ -109,17 +109,17 @@
 
                     <p class="col-12">Stérilisation / Castration :
                         {% if animal.sterilisation %}
-                            <span class="badge badge-warning">A faire</span> 
-                        {% else %}
                             <span class="badge badge-success">Fait</span> 
+                        {% else %}
+                            <span class="badge badge-warning">A faire</span> 
                         {% endif %}
                     </p>
 
                     <p class="col-12">Vaccins :
                         {% if animal.vaccin %}
-                            <span class="badge badge-warning">A faire</span> 
-                        {% else %}
                             <span class="badge badge-success">Fait</span> 
+                        {% else %}
+                            <span class="badge badge-warning">A faire</span> 
                         {% endif %}
                     </p>
 

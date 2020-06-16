@@ -81,6 +81,10 @@ legend {
     display: none;
 }
 
+label {
+    margin-top: 1rem!important;
+}
+
 .error404 {
     max-width: 100%!important;
     height: auto!important;
